@@ -28,7 +28,6 @@
 #include "math.h"
 #include "mpu6050.h"
 #include "micros.h"
-#include "quaternion.h"
 #include "FusionAHRS.h"
 #include "LowPassFilter.h"
 #include "NotchFilter.h"
@@ -38,7 +37,6 @@
 /* USER CODE BEGIN PTD */
 MPU6050_t imu_t;
 
-Quaternion_t quaternion_t;
 FusionBias fusionBiasIMU1;
 FusionAhrs fusionAhrsIMU1;
 FusionAHRS_t AHRS_IMU1;
@@ -143,7 +141,6 @@ int main(void)
   NotchFilterInit(&NF_gyro_z, NF_GYRO_CFREQ_HZ, NF_GYRO_NWDTH_HZ, sample_time_sec_f32);
 
   //Init state estimators
-  quaternionInit(&quaternion_t, sample_time_us_f32);
   initFusionAHRS(&fusionBiasIMU1, &fusionAhrsIMU1, &AHRS_IMU1, sample_time_sec_f32);
 
   //Init sensors
@@ -191,10 +188,6 @@ int main(void)
 		gyroNotchFiltered_f32[2] = (LPFTwoPole_Update(&LPF_gyro_z, gyroLowPassFiltered_f32[2]));
 
 		//Get state estimations, using quaternion and fusion-quaternion based estimators
-		quaternionUpdate(&quaternion_t, accelLowPassFiltered_f32[0], accelLowPassFiltered_f32[1], accelLowPassFiltered_f32[2],
-				gyroNotchFiltered_f32[0]*(M_PI/180.0f), gyroNotchFiltered_f32[1]*(M_PI/180.0f),
-					gyroNotchFiltered_f32[2]*(M_PI/180.0f));
-
 		getFusionAHRS_6DoF(&fusionBiasIMU1, &fusionAhrsIMU1, &AHRS_IMU1, accelLowPassFiltered_f32[0], accelLowPassFiltered_f32[1],
 				accelLowPassFiltered_f32[2], gyroNotchFiltered_f32[0]*(M_PI/180.0f), gyroNotchFiltered_f32[1]*(M_PI/180.0f),
 					gyroNotchFiltered_f32[2]*(M_PI/180.0f));
@@ -205,9 +198,8 @@ int main(void)
 
 	if(newData_u8)
 	{
-		printf("%f, %f, %f, %f, %f, %f\r\n",
-				AHRS_IMU1.YAW, AHRS_IMU1.PITCH, AHRS_IMU1.ROLL,
-				quaternion_t.yaw, quaternion_t.pitch, quaternion_t.roll);
+		printf("%f, %f, %f\r\n",
+				AHRS_IMU1.YAW, AHRS_IMU1.PITCH, AHRS_IMU1.ROLL);
 		newData_u8 = FALSE;
 	}
 

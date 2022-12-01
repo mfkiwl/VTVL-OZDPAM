@@ -31,10 +31,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
  ../Core/Inc/i2c.h ../Core/Inc/main.h ../Core/Inc/usart.h \
  ../Core/Inc/gpio.h ../Core/Inc/mpu6050.h ../Core/Inc/i2c.h \
- ../Core/Inc/./mpu_defs.h ../Core/Inc/micros.h ../Core/Inc/quaternion.h \
- ../Core/Inc/FusionAHRS.h ../Core/Inc/..\Fusion\Fusion.h \
- ../Core/Inc/..\Fusion\FusionAhrs.h ../Core/Inc/..\Fusion\FusionTypes.h \
- ../Core/Inc/..\Fusion\FusionBias.h \
+ ../Core/Inc/./mpu_defs.h ../Core/Inc/micros.h ../Core/Inc/FusionAHRS.h \
+ ../Core/Inc/..\Fusion\Fusion.h ../Core/Inc/..\Fusion\FusionAhrs.h \
+ ../Core/Inc/..\Fusion\FusionTypes.h ../Core/Inc/..\Fusion\FusionBias.h \
  ../Core/Inc/..\Fusion\FusionCalibration.h \
  ../Core/Inc/..\Fusion\FusionCompass.h ../Core/Inc/LowPassFilter.h \
  ../Core/Inc/NotchFilter.h
@@ -77,7 +76,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/i2c.h:
 ../Core/Inc/./mpu_defs.h:
 ../Core/Inc/micros.h:
-../Core/Inc/quaternion.h:
 ../Core/Inc/FusionAHRS.h:
 ../Core/Inc/..\Fusion\Fusion.h:
 ../Core/Inc/..\Fusion\FusionAhrs.h:
