@@ -61,8 +61,8 @@ all: main-build
 main-build: H7-ROCKET.elf secondary-outputs
 
 # Tool invocations
-H7-ROCKET.elf H7-ROCKET.map: $(OBJS) $(USER_OBJS) C:\Users\ibrahim\Desktop\H7-ROCKET\STM32H743VITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "H7-ROCKET.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\ibrahim\Desktop\H7-ROCKET\STM32H743VITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="H7-ROCKET.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+H7-ROCKET.elf H7-ROCKET.map: $(OBJS) $(USER_OBJS) C:\Users\ibrahim\Desktop\Fork\VTVL-OZDPAM\STM32H743VITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "H7-ROCKET.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\ibrahim\Desktop\Fork\VTVL-OZDPAM\STM32H743VITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="H7-ROCKET.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
