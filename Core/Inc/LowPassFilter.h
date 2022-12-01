@@ -2,6 +2,7 @@
 #define LPF_H
 
 #include <stdint.h>
+#include "math.h"
 
 #define LPF_TYPE_BESSEL 1
 
